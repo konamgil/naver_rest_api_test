@@ -10,9 +10,18 @@ var client_id = config.accout.client_id;
 var client_secret = config.accout.client_secret;
 var host = 'openapi.naver.com';
 var port = 443;
-// var uri = 'v1/search/blog.xml&query=' + query;
-var query = '필동 밥집';
-var uri = '/v1/search/blog.xml?query=' + urlencode(query);
+
+var process = require('process');
+var firstQuery = process.argv[2];
+var secondQuery = process.argv[3];
+
+if(secondQuery != undefined){
+  firstQuery = firstQuery + " " +  secondQuery;
+}
+
+var searchCount = '19';
+var query = firstQuery || '삼전동 한식';
+var uri = '/v1/search/blog.xml?query=' + urlencode(query) + '&display=' + urlencode(searchCount) ;
 var options = {
     host: host,
     port: port,
@@ -26,19 +35,15 @@ var options = {
 
 var req = https.request(options, function(res) {
     console.log('STATUS: ' + res.statusCode);
-    console.log('HEADERS: ' + res.headers);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
     res.on('data', function(chunk) {
         // 	console.log('BODY: ' + chunk);
-        // fs.writeFile('result.xml',chunk, (err) => {
-        //   if (err) throw err;
-        //   console.log('It\'s saved!');
-        //   });
         parseString(chunk, function(err, result) {
             // console.dir(result);
-            fs.writeFile('./검색조회/' + query + '.json', JSON.stringify(result), (err) => {
+            fs.writeFile('./검색조회/' + query + '.json', JSON.stringify(result,null, 4), (err) => {
                 if (err) throw err;
-                console.log('It\'s saved!');
+                console.log(query + '의 검색이 완료되었습니다.');
             });
         });
     });
