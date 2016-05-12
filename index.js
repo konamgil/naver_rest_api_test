@@ -1,6 +1,5 @@
 var request = require('request');
-var utf8 = require('utf8');
-var query = utf8.encode('반지의제왕');
+var urlencode = require('urlencode');
 var https = require('https');
 
  var client_id = '';
@@ -8,7 +7,7 @@ var https = require('https');
  var host = 'openapi.naver.com';
  var port = 443;
  // var uri = 'v1/search/blog.xml&query=' + query;
-var uri = '/v1/search/movie.xml?query='+query;
+var uri = '/v1/search/movie.xml?query=' + urlencode('캡틴아메리카시빌워');
  var options = {
  		host: host,
  		port: port,
