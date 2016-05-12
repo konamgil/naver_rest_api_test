@@ -3,8 +3,8 @@ var utf8 = require('utf8');
 var query = utf8.encode('반지의제왕');
 var https = require('https');
 
- var client_id = 'Hv31_VLvdeMNkte0thBE';
- var client_secret = 'z8J5jzNYe7';
+ var client_id = '';
+ var client_secret = '';
  var host = 'openapi.naver.com';
  var port = 443;
  // var uri = 'v1/search/blog.xml&query=' + query;
