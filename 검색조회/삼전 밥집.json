@@ -1,0 +1,32 @@
+{
+    "rss": {
+        "$": {
+            "version": "2.0"
+        },
+        "channel": [
+            {
+                "title": [
+                    "Naver Open API - blog ::'삼전 밥집display=20'"
+                ],
+                "link": [
+                    "http://search.naver.com"
+                ],
+                "description": [
+                    "Naver Search Result"
+                ],
+                "lastBuildDate": [
+                    "Fri, 13 May 2016 04:04:29 +0900"
+                ],
+                "total": [
+                    "0"
+                ],
+                "start": [
+                    "1"
+                ],
+                "display": [
+                    "0"
+                ]
+            }
+        ]
+    }
+}
